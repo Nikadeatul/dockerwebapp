@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=di, initial-scale=1.0" />
+    <title>DOCKER WEBAPP</title>
+    <link rel="stylesheet" href="index2.css" />
+    <script>
+     
+     function Myfunction(){
+         var str = document.getElementById("cmd").value;
+         str = str.replace(" ","+")
+         response = functionCallApi(("/cgi-bin/dockerrun.py?x="+str))
+         document.getElementById("d1").innerHTML = response;
+}
+      function functionCallApi(response){
+      var xmlHttp = new XMLHttpRequest();
+      xmlHttp.open("GET",response,false);
+      xmlHttp.send(null);
+      return xmlHttp.responseText;
+      }
+
+    </script>
+  </head>
+
+  <style>
+    #d1 {
+      border: 8px solid rgba(4, 13, 54, 0.788);
+      width: 45%;
+      padding: 120px 120px;
+      margin: auto;
+      height: 10%;
+      background-color: rgb(196, 230, 218);
+      font-size: 21px;
+      overflow: scroll;
+      border-radius: 16px;
+      font-weight: bold;
+      text-align: left;
+    }
+  </style>
+
+  <body>
+   
+      <div class="title">
+        *WELCOME TO DOCKER WEB*
+        <div class="input-fields">
+          <div class="items">
+            <label for="Enteryourchoice" class="label">Enter your command</label>
+            <input id="cmd" type="text" name="x" class="input" />
+          </div>
+        </div>
+
+        <button onclick="Myfunction()">SUBMIT</button>
+        <pre>
+      <div id="d1"><h4>Output</h4></div>
+      </pre>
+      </div>
+   
+  </body>
+</html>
